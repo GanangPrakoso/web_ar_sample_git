@@ -1,0 +1,24 @@
+import 'package:flutter/material.dart';
+import 'package:model_viewer/model_viewer.dart';
+
+class CustomModalViewer extends StatelessWidget {
+  const CustomModalViewer({this.src});
+  final String src;
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+          body: ModelViewer(
+        src: src,
+        ar: true,
+        autoRotate: true,
+        cameraControls: true,
+        backgroundColor: Colors.white,
+        autoPlay: true,
+        autoRotateDelay: 1500,
+        arScale: 'auto',
+      )),
+    );
+  }
+}
