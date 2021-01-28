@@ -1,7 +1,24 @@
 import 'package:flutter/material.dart';
 import 'sliver_app_bar_background.dart';
 
-class HomePageAppBar extends StatelessWidget {
+class HomePageAppBar extends StatefulWidget {
+  @override
+  _HomePageAppBarState createState() => _HomePageAppBarState();
+}
+
+class _HomePageAppBarState extends State<HomePageAppBar> {
+  TextEditingController searchController;
+
+  @override
+  void initState() {
+    super.initState();
+    init();
+  }
+
+  void init() {
+    searchController = TextEditingController();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
