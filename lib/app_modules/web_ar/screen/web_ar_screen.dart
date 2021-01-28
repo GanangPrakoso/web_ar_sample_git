@@ -27,6 +27,8 @@ class WebArScreen extends StatelessWidget {
               },
               child: CustomScrollView(slivers: <Widget>[
                 HomePageAppBar(),
+                // FloatingActionButton(
+                // onPressed: () {}, child: Icon(Icons.photo_library)),
                 if (!snapshot.hasData)
                   SliverPadding(
                     padding: const EdgeInsets.all(20),
@@ -39,9 +41,7 @@ class WebArScreen extends StatelessWidget {
                                 childAspectRatio: .85),
                         delegate: SliverChildBuilderDelegate(
                             (BuildContext context, int index) =>
-                                const ObjectCard(
-                                  fetched: false,
-                                ),
+                                const ObjectCard(fetched: false),
                             childCount: 6)),
                   )
                 else
@@ -50,19 +50,17 @@ class WebArScreen extends StatelessWidget {
                     sliver: SliverGrid(
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          mainAxisSpacing: 20.0,
-                          crossAxisSpacing: 20.0,
-                          childAspectRatio: .85,
-                        ),
+                                crossAxisCount: 2,
+                                mainAxisSpacing: 20.0,
+                                crossAxisSpacing: 20.0,
+                                childAspectRatio: .85),
                         delegate: SliverChildBuilderDelegate(
-                          (BuildContext context, int index) => ObjectCard(
-                              assets: snapshot.data[index] + '.png',
-                              modelSrc: snapshot.data[index] + '.glb',
-                              name: _nameConverter(snapshot.data[index]),
-                              fetched: true),
-                          childCount: snapshot.data.length,
-                        )),
+                            (BuildContext context, int index) => ObjectCard(
+                                assets: snapshot.data[index] + '.png',
+                                modelSrc: snapshot.data[index] + '.glb',
+                                name: _nameConverter(snapshot.data[index]),
+                                fetched: true),
+                            childCount: snapshot.data.length)),
                   )
               ]),
             );

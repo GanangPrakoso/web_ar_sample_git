@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:model_viewer/model_viewer.dart';
 
 class CustomModalViewer extends StatelessWidget {
-  const CustomModalViewer({this.src});
-  final String src;
+  const CustomModalViewer({this.src, this.title});
+  final String src, title;
 
   @override
   Widget build(BuildContext context) {
@@ -11,6 +11,7 @@ class CustomModalViewer extends StatelessWidget {
       home: Scaffold(
           body: ModelViewer(
         src: src,
+        title: title,
         ar: true,
         autoRotate: true,
         cameraControls: true,

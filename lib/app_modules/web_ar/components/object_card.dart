@@ -57,7 +57,10 @@ class ObjectCard extends StatelessWidget {
     return GestureDetector(
       onTap: () =>
           Navigator.of(context).push<MaterialPageRoute>(MaterialPageRoute(
-        builder: (BuildContext context) => CustomModalViewer(src: modelSrc),
+        builder: (BuildContext context) => CustomModalViewer(
+          src: modelSrc,
+          title: name,
+        ),
       )),
       child: Container(
           decoration: BoxDecoration(
