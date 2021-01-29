@@ -9,7 +9,6 @@ class WebArApp extends StatelessWidget {
     return Provider<WebArBloc>(
         create: (_) => WebArBloc(),
         dispose: (_, WebArBloc bloc) => bloc.dispose(),
-        // child: Scaffold(body: WebArScreen1()),
         child: WebArScreen());
   }
 }

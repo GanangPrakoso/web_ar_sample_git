@@ -35,7 +35,7 @@ class WebArBloc {
     final List<String> urlList = response.split('\r\n');
 
     _objectRemap = urlList;
-    _objectList.sink.add(_objectRemap);
+    _objectList.sink.add(urlList);
   }
 
   Future<void> refreshList() async {
@@ -47,12 +47,13 @@ class WebArBloc {
   ScanStreamTransformer<String, String> _getSearch() =>
       ScanStreamTransformer<String, String>(
           (String cache, String searchInfo, int index) {
-        List<String> _tempList = _objectRemap;
+        final List<String> _tempList = _objectRemap;
 
         if (searchInfo.isNotEmpty) {
           List<String> searchList = [];
           for (int i = 0; i < _tempList.length; i++) {
-            if (_tempList[i]
+            final List tempString = _tempList[i].split('/');
+            if (tempString[4]
                 .toLowerCase()
                 .contains(searchInfo.toLowerCase().replaceAll(' ', '_'))) {
               searchList.add(_tempList[i]);
@@ -63,7 +64,11 @@ class WebArBloc {
           }
         } else {
           if (!_objectList.isClosed) {
-            _objectList.sink.add(_objectRemap);
+            if (!_objectList.hasValue) {
+              refreshList();
+            } else {
+              _objectList.sink.add(_objectRemap);
+            }
           }
         }
 

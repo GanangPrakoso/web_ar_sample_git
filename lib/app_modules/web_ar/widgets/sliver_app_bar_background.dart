@@ -32,7 +32,7 @@ class SliverAppBarBackground extends StatelessWidget {
                                 FocusScope.of(context).unfocus(),
                             onChanged: bloc.searchListener,
                             decoration: InputDecoration(
-                                hintText: 'Search AR',
+                                hintText: 'Search AR Object',
                                 border: InputBorder.none,
                                 icon: Icon(
                                   Icons.search,
